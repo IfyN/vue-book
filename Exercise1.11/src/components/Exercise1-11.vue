@@ -2,10 +2,10 @@
   <div>
 
     <h1>Returning Shopping Cart Data with Vue methods</h1>
-    <div>Cart({{ totalItems }}) {{ totalCost }} </div>
+    <div>Cart({{ totalItems }}) {{ totalCost }} {{ formatCurrency(totalCost) }}</div>
     <ul>
       <li v-for="n in 5" :key="n">
-        <a href="#" @click="addToCart(n)">Add {{ n }}</a>
+        <a href="#" @click="addToCart(n)">Add {{ formatCurrency(totalCost) }}</a>
       </li>
     </ul>
   </div>
@@ -25,6 +25,10 @@ export default {
       this.totalCost = this.totalCost + 1,
         this.totalItems = this.totalItems + 1
     },
+
+    formatCurrency(currVal) {
+      return `₦${currVal.toFixed(2)}`
+    }
   }
 
 
