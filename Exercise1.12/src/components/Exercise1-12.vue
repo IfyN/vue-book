@@ -13,9 +13,16 @@
 export default {
   data() {
     return {
-      lists: ['Game of Thrones', "Billions", "Handmaids Tale", "Curb Your Enthusiasm", "Abbott Elementary", "This is Us", "Emily in Paris"]
+      lists: ["Game of Thrones", "Billions", "Handmaids Tale", "Curb Your Enthusiasm", "Abbott Elementary", "This is Us", "Emily in Paris"]
     }
-  }
+
+  },
+  beforeCreate() {
+    alert('beforeCreate: data is static, thats it')
+  },
+  created() {
+    alert('created: data and events ready, but no DOM')
+  },
 
 }
 </script>
