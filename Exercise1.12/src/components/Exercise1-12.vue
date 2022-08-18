@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      list: ["Game of Thrones", "Billions", "Handmaids Tale", "Curb Your Enthusiasm", "Abbott Elementary", "This is Us", "Emily in Paris"]
+      list: ["Game of Thrones", "Billions", "Handmaids Tale", "Curb Your Enthusiasm", "Abbott Elementary", "This is Us", "Emily in Paris", "Devils Advocate"]
     }
 
   },
@@ -40,6 +40,12 @@ export default {
   },
   updated() {
     alert('updated: virtual DOM will update after you click OK')
+  },
+  beforeDestroy() {
+    alert('beforeDestroy: about to blow up this component')
+  },
+  destroyed() {
+    alert('destroyed: this component has been destroyed')
   },
 
 }
