@@ -2,10 +2,10 @@
   <div>
 
     <h1>Returning Shopping Cart Data with Vue methods</h1>
-    <div>Cart({{ totalItems }}) {{ totalCost }} {{ formatCurrency(totalCost) }}</div>
+    <div>Cart({{ totalItems }}) {{ formatCurrency(totalCost) }}</div>
     <ul>
       <li v-for="n in 5" :key="n">
-        <a href="#" @click="addToCart(n)">Add {{ formatCurrency(totalCost) }}</a>
+        <a href="#" @click="addToCart(n)">Add {{ formatCurrency(n) }}</a>
       </li>
     </ul>
   </div>
@@ -23,7 +23,7 @@ export default {
   methods: {
     addToCart(n) {
       this.totalCost = this.totalCost + 1,
-        this.totalItems = this.totalItems + 1
+        this.totalItems = this.totalItems + n
     },
 
     formatCurrency(currVal) {
