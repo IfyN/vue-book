@@ -2,8 +2,9 @@
   <div>
     <h1> Control Data with Vue Lifecycles hook</h1>
     <ul>
-      <li v-for="(item, n) in lists" :key="n">
+      <li v-for="(item, n) in list" :key="n">
         {{ item }}
+        <a @click="deleteItem(item)"></a>
       </li>
     </ul>
   </div>
@@ -13,15 +14,32 @@
 export default {
   data() {
     return {
-      lists: ["Game of Thrones", "Billions", "Handmaids Tale", "Curb Your Enthusiasm", "Abbott Elementary", "This is Us", "Emily in Paris"]
+      list: ["Game of Thrones", "Billions", "Handmaids Tale", "Curb Your Enthusiasm", "Abbott Elementary", "This is Us", "Emily in Paris"]
     }
 
+  },
+  methods: {
+    deleteItem(value) {
+      this.list = this.list.filter(item => item !== value)
+    }
   },
   beforeCreate() {
     alert('beforeCreate: data is static, thats it')
   },
   created() {
     alert('created: data and events ready, but no DOM')
+  },
+  beforeMount() {
+    alert('beforeMount: $el not ready')
+  },
+  mounted() {
+    alert('mounted: DOM ready to use')
+  },
+  beforeUpdate() {
+    alert('beforeUpdate: we know an update is about to happen, and have the data')
+  },
+  updated() {
+    alert('updated: virtual DOM will update after you click OK')
   },
 
 }
