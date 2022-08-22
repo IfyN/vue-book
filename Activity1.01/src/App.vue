@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <h2>Shopping list</h2>
+    <h2>Shopping List</h2>
+    <div class="user-input">
+      <input v-model="input" @keyup.enter="addItem" placeholder="Add new shopping item" ref="input" />
+      <button @click="addItem"> Add </button>
+    </div>
+    <!-- <h2>Shopping list</h2>
     <div class="user-input">
       <input
         placeholder="Press enter to add new item"
@@ -17,7 +22,7 @@
       </li>
     </ul>
     <br />
-    <button class="button--delete" @click="deleteItem()">Delete all</button>
+    <button class="button--delete" @click="deleteItem()">Delete all</button> -->
   </div>
 </template>
 
@@ -26,24 +31,23 @@ export default {
   data() {
     return {
       input: '',
-      shoppingList: [],
     }
   },
   methods: {
-    addItem() {
-      // Don't allow adding to the list if empty
-      if (!this.input) return
-      this.shoppingList.push(this.input)
-      // Clear the input after adding
-      this.input = ''
-      // Focus the input element again for quick typing!
-      this.$refs.input.focus()
-    },
-    deleteItem(i) {
-      this.shoppingList = i
-        ? this.shoppingList.filter((item, x) => x !== i)
-        : []
-    },
+    // addItem() {
+    //   // Don't allow adding to the list if empty
+    //   if (!this.input) return
+    //   this.shoppingList.push(this.input)
+    //   // Clear the input after adding
+    //   this.input = ''
+    //   // Focus the input element again for quick typing!
+    //   this.$refs.input.focus()
+    // },
+    // deleteItem(i) {
+    //   this.shoppingList = i
+    //     ? this.shoppingList.filter((item, x) => x !== i)
+    //     : []
+    // },
   },
 }
 </script>
@@ -73,6 +77,7 @@ $color-grey: #2c3e50;
   display: flex;
   align-items: center;
   padding-bottom: 20px;
+
   input {
     width: 100%;
     padding: 10px 6px;
@@ -97,7 +102,7 @@ button {
   color: white;
   white-space: nowrap;
 
-  + button {
+  +button {
     margin-left: 10px;
   }
 }
@@ -122,7 +127,7 @@ ul {
   padding: 30px;
   border: 1px solid rgba(0, 0, 0, 0.25);
 
-  > li {
+  >li {
     color: $color-grey;
     margin-bottom: 4px;
   }
