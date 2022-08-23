@@ -1,4 +1,4 @@
-# test-app
+# Chapter 1 Activity Shopping - List app
 
 ## Project setup
 ```

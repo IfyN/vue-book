@@ -5,6 +5,13 @@
       <input v-model="input" @keyup.enter="addItem" placeholder="Add new shopping item" ref="input" />
       <button @click="addItem"> Add </button>
     </div>
+
+    <ul v-if="shoppingList">
+      <li v-for="(item, n) in shoppingList" :key="n" class="item">
+        <span> {{ item }}</span>
+        <button class="button--remove" @click="deleteItem(n)">Delete</button>
+      </li>
+    </ul>
     <!-- <h2>Shopping list</h2>
     <div class="user-input">
       <input
@@ -31,23 +38,38 @@ export default {
   data() {
     return {
       input: '',
+      shoppingList: [],
     }
   },
   methods: {
-    // addItem() {
-    //   // Don't allow adding to the list if empty
-    //   if (!this.input) return
-    //   this.shoppingList.push(this.input)
-    //   // Clear the input after adding
-    //   this.input = ''
-    //   // Focus the input element again for quick typing!
-    //   this.$refs.input.focus()
-    // },
-    // deleteItem(i) {
-    //   this.shoppingList = i
-    //     ? this.shoppingList.filter((item, x) => x !== i)
-    //     : []
-    // },
+    addItem() {
+      if (!this.input) return
+      this.shoppingList.push(this.input)
+      //after adding an input element clear form 
+      this.input = '';
+      //Focus the input element again for quick typing!
+      this.$refs.input.focus()
+    },
+
+    deleteItem(n) {
+      this.shoppingList = n
+        ? this.shoppingList.filter((item, x) => x !== n)
+        : []
+    }
+    //   // addItem() {
+    //   //   // Don't allow adding to the list if empty
+    //   //   if (!this.input) return
+    //   //   this.shoppingList.push(this.input)
+    //   //   // Clear the input after adding
+    //   //   this.input = ''
+    //   //   // Focus the input element again for quick typing!
+    //   //   this.$refs.input.focus()
+    //   // },
+    //   // deleteItem(i) {
+    //   //   this.shoppingList = i
+    //   //     ? this.shoppingList.filter((item, x) => x !== i)
+    //   //     : []
+    //   // },
   },
 }
 </script>
